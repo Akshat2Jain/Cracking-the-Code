@@ -2,26 +2,29 @@
 
 #include <iostream>
 #include <vector>
+#include <algorithm> // for reverse funtion to perform
 
 using namespace std;
 
-void reverse(int arr[], int &i, int &j)
-{
-    while (i <= j)
-    {
-        swap(arr[i], arr[j]);
-        i++;
-        j--;
-    }
-}
+// void reverse(vector<int> &arr, int i, int j)
+// {
+//     while (i <= j)
+//     {
+//         swap(arr[i], arr[j]);   // for manual reverse method if you are using array
+//         i++;
+//         j--;
+//     }
+// }
 
-void rotate(int arr[], int &k)
+void rotate(vector<int> &nums, int k)
 {
-    int n = sizeof(arr) / sizeof(arr[0]);
-    k = k % n;
-    reverse(arr, 0, k - n - 1);
-    reverse(arr, k - n, n - 1);
-    reverse(arr, 0, n - 1);
+    int n = nums.size();
+    // Reverse the entire array
+    reverse(nums.begin(), nums.end());
+    // Reverse the first k elements
+    reverse(nums.begin(), nums.begin() + k);
+    // Reverse the rest of the elements after k
+    reverse(nums.begin() + k, nums.end());
 }
 
 int main()
@@ -34,10 +37,13 @@ int main()
     // rotate 2 steps to the right: [6,7,1,2,3,4,5]
     // rotate 3 steps to the right: [5,6,7,1,2,3,4]
 
-    int arr[] = {1, 2, 3, 4, 5, 6, 7};
-    int n = sizeof(arr) / sizeof(arr[0]);
+    vector<int> arr;
+
+    arr = {1, 2, 3, 4, 5, 6, 7};
+    int n = arr.size();
     int k = 3;
     rotate(arr, k);
+    cout << endl;
     for (int i = 0; i < n; i++)
     {
         cout << arr[i] << " ";
