@@ -46,4 +46,9 @@ int main()
     vec1.push_back(8);                 //--> add element at the end of vec
     sort(vec1.begin(), vec1.end());    //--> will sort the vector
     reverse(vec1.begin(), vec1.end()); //--> will reverse the array
+
+    // Note (Exception)
+    // As we learnt that array by default passed by refrence in function
+    // but vectors are passed by value by defualt
+    // to pass them by refrence we use &
 }
