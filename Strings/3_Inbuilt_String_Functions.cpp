@@ -46,4 +46,9 @@ int main()
     int num = 4;
     string nums = to_string(num);
     cout << nums << "---> but this 4 is in string" << endl;
+
+    // 8 stoi ---> string to integer
+    string str5 = "123";
+    int num1 = stoi(str5);
+    cout << num1 << endl;
 }
